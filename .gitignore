@@ -1,0 +1,13 @@
+#Virtual Environment
+aeroglass_env/
+
+#Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+#Mac/OS System Files
+.DS_Store
+
+#Streamlit/App Configs
+.streamlit/secrets.toml
