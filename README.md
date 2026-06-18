@@ -41,6 +41,5 @@ Pure predictive accuracy is insufficient in safety-critical domains like aerospa
 AeroGlass runs a Baseline Dual-Layer BiLSTM alongside a custom Temporal Attention BiLSTM. While the baseline model operates as an uninterpretable "Black Box," the AeroGlass model extracts SHAP matrices to definitively isolate the mechanical stressors driving a failure (e.g., thermal stress vs. rotational mechanics). The front-end is engineered using Streamlit and Plotly, utilizing mmap_mode and @st.cache_resource to fluidly stream heavy multi-dimensional tensor arrays in real-time without memory bloat.
 
 ## 🤝 Credits
-Built with Streamlit and Plotly.
-
-Dataset: NASA CMAPSS (Commercial Modular Aero-Propulsion System Simulation) Turbofan Degradation Data.
+* Built with [Streamlit](https://streamlit.io/) and [Plotly](https://plotly.com/).
+* Dataset: NASA CMAPSS (Commercial Modular Aero-Propulsion System Simulation) Turbofan Degradation Data.
