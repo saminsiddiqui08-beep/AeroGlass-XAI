@@ -6,7 +6,7 @@ from utils.data_loader import load_engine_data, load_shap_values
 
 def render():
     st.header("[XAI] Safety Audit")
-    st.markdown("### Cycle-level Spatial SHAP feature attribution.")
+    st.markdown("### Sensor-level SHAP feature attribution.")
     st.markdown("---")
 
     col_engine, col_cycle = st.columns(2)
@@ -36,7 +36,7 @@ def render():
         st.subheader(
             f"Thermodynamic Driver Analysis - Engine {engine_id_selected} at Cycle {target_cycle}")
 
-        # Loading the spatial SHAP dictionary and isolating the top 10 impact drivers
+        # Loading the sensor-level SHAP dictionary and isolating the top 10 impact drivers
         shap_dict = load_shap_values(engine_id_selected, target_cycle)
 
         if shap_dict:

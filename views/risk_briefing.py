@@ -37,7 +37,7 @@ def render():
             st.markdown("---")
 
             with st.status("Running pre-flight safety diagnostics...", expanded=True) as status:
-                st.write("Initializing telemetry handshake...")
+                st.write("Indexing cached fleet telemetry records...")
                 time.sleep(0.4)
 
                 # Extracting telemetry rows for the selected port and starboard engines
@@ -48,7 +48,7 @@ def render():
                     status.update(label="Diagnostics Failed.",
                                   state="error", expanded=True)
                     st.error(
-                        "Engine telemetry not found in active fleet database. Verify sensor connections.", icon="⚠️")
+                        "Engine ID not found in the loaded fleet dataset. Select a valid Engine ID from the dropdown.", icon="⚠️")
                     return
 
                 st.write("Extracting RUL projections...")

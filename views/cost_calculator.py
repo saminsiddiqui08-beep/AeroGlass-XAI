@@ -18,7 +18,7 @@ def render():
         critical_engines = len(df_fleet[df_fleet['Status'] == 'CRITICAL'])
 
         st.markdown("### Interactive Financial Parameters")
-        st.info("[SYSTEM GUIDE]: Adjust the costs below to match your airline's actual operating expenses. Crucially, use the AI False Negative Rate slider to stress-test the model. This slider simulates what happens if the AI's accuracy drops and it accidentally clears a failing engine for flight.")
+        st.info("[SYSTEM GUIDE]: Adjust the costs below to model your airline's estimated operating expenses. Crucially, use the AI False Negative Rate slider to stress-test the model. This slider simulates what happens if the AI's accuracy drops and it accidentally clears a failing engine for flight.")
 
         col_param1, col_param2, col_param3 = st.columns(3)
 

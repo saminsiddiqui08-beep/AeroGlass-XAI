@@ -107,7 +107,7 @@ def render():
             st.subheader("[!] Priority Triage List")
             st.markdown("Engines requiring immediate physical inspection.")
 
-            # Filtering and sorting the fleet database to isolate engines requiring immediate mechanical triage
+            # Filtering and sorting the cached fleet DataFrame to isolate engines requiring immediate mechanical triage
             df_triage = df_fleet[df_fleet['Status'].isin(
                 ['CRITICAL', 'WARNING'])].copy()
             df_triage = df_triage.sort_values(

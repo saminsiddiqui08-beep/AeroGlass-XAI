@@ -5,9 +5,9 @@ from utils.data_loader import load_engine_data
 
 
 def render():
-    st.header("📡 Live Telemetry & Model Showdown")
+    st.header("📡 Interactive Telemetry & Model Showdown")
     st.markdown(
-        "### Real-time thermodynamic feeds and the Accuracy vs. Interpretability Trade-off.")
+        "### Simulated thermodynamic feeds and the Accuracy vs. Interpretability Trade-off.")
     st.markdown("---")
 
     col_control, col_info = st.columns([1, 2])
@@ -18,10 +18,10 @@ def render():
 
         playback_speed = st.slider("⏱️ Playback Speed Multiplier",
                                    min_value=1, max_value=10, value=5,
-                                   help="1 = Real-time monitoring, 10 = Fast-forward")
+                                   help="1 = Standard playback, 10 = Fast-forward")
 
     with col_info:
-        st.info("**Dual-Simulation Mode:** Watch the Baseline Advanced BiLSTM and the AeroGlass XAI Attention BiLSTM predict the Remaining Useful Life simultaneously.")
+        st.info("**Dual-Simulation Mode:** Watch the Baseline BiLSTM and the AeroGlass XAI Attention BiLSTM visualize pre-computed Remaining Useful Life estimates simultaneously.")
 
     st.markdown("---")
 
@@ -33,9 +33,9 @@ def render():
         col_btn1, col_btn2 = st.columns([1, 4])
         with col_btn1:
             start_stream = st.button(
-                "▶ START TELEMETRY STREAM", type="primary")
+                "▶ START TELEMETRY SIMULATION", type="primary")
         with col_btn2:
-            stop_stream = st.button("⏹ STOP STREAM", type="secondary")
+            stop_stream = st.button("⏹ STOP SIMULATION", type="secondary")
 
         # Allocating empty layout blocks to dynamically overwrite during the render loop
         metric_container = st.empty()
@@ -63,7 +63,8 @@ def render():
 
                 # Handling user interruption
                 if stop_stream:
-                    st.warning("Stream interrupted by operator.", icon="⚠️")
+                    st.warning(
+                        "Simulation interrupted by operator.", icon="⚠️")
                     break
 
                 current_cycle = cycles[i]
@@ -72,7 +73,7 @@ def render():
                 current_rul_xai = ruls_xai[i]
                 current_rul_adv = ruls_adv[i]
 
-                # Rapidly slicing and rendering the pre-built dataframe to simulate a live data stream
+                # Rapidly slicing and rendering the pre-built dataframe to simulate sequential telemetry playback
                 with metric_container.container():
                     st.subheader(f"Flight Cycle: {current_cycle}")
 
@@ -136,5 +137,5 @@ def render():
 
         ---
         
-        **The Verdict:** While the Baseline Advanced model mathematically saves ~2.8 cycles on paper, the AeroGlass model is fundamentally superior for enterprise deployment. Sacrificing a microscopic fraction of raw accuracy in exchange for the ability to definitively tell a mechanic *why* an engine is failing is mandatory for FAA compliance and pilot safety.
+        **The Verdict:** While the Baseline Advanced model mathematically saves ~2.8 cycles on paper, the AeroGlass model is fundamentally superior for enterprise deployment. Sacrificing a microscopic fraction of raw accuracy in exchange for the ability to definitively tell a mechanic *why* an engine is failing aligns with best practices for safety-critical AI certification and supports human-in-the-loop verification.
         """)

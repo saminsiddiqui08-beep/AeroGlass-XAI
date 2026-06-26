@@ -57,7 +57,7 @@ def load_engine_data(engine_id: int):
         est_life_attention = total_recorded_cycles + final_attention_pred
         est_life_advanced = total_recorded_cycles + final_advanced_pred
 
-        # Fusing live cycle counts with baseline predictions to generate real-time Remaining Useful Life
+        # Fusing recorded cycle counts with baseline predictions to generate the interactive Remaining Useful Life estimate
         df_engine_telemetry['AeroGlass_XAI_RUL'] = est_life_attention - \
             df_engine_telemetry['time_cycles']
         df_engine_telemetry['Baseline_Advanced_RUL'] = est_life_advanced - \

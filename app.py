@@ -10,7 +10,7 @@ load_aerospace_theme()
 
 # Pre-loading heavy data matrices into the cache exactly once to prevent UI flickering
 if 'warmed_up' not in st.session_state:
-    with st.spinner("Establishing secure connection to CMAPSS telemetry database..."):
+    with st.spinner("Loading pre-computed inference matrices into cache..."):
         load_fleet_summary()
         _load_raw_shap_array()
         st.session_state['warmed_up'] = True
@@ -27,7 +27,7 @@ def sidebar_navigation():
             menu_title="System Navigation",
             options=[
                 "Fleet Overview",
-                "Live Telemetry Simulator",
+                "Interactive Telemetry Simulation",
                 "Pre-Flight Risk Briefing",
                 "XAI Safety Audit",
                 "Operational ROI Calculator"
@@ -69,7 +69,7 @@ def sidebar_navigation():
                 <span style='color: #00E5FF;'>●</span> SYSTEM ONLINE<br><br>
                 MODEL: BiLSTM<br>
                 ENGINE: CMAPSS FD004<br>
-                XAI: Spatial Attention + SHAP
+                XAI: Temporal Attention + Sensor-Level SHAP
             </div>
             """,
             unsafe_allow_html=True
@@ -86,9 +86,9 @@ def main():
         from views import fleet_overview
         fleet_overview.render()
 
-    elif current_view == "Live Telemetry Simulator":
-        from views import live_telemetry
-        live_telemetry.render()
+    elif current_view == "Interactive Telemetry Simulation":
+        from views import telemetry_simulation
+        telemetry_simulation.render()
 
     elif current_view == "Pre-Flight Risk Briefing":
         from views import risk_briefing
